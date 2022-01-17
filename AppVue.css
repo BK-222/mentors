@@ -1,0 +1,163 @@
+/*components*/
+
+/*components-theHeader*/
+.navbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: darkblue;
+	padding: 0.25rem;
+}
+
+.navbar a {
+	padding: 1rem 1.5rem;
+	color: lightgray;
+	border: 1px solid transparent; /*so that the li links don't move when hovered over*/
+	text-decoration: none;
+	list-style: none;
+}
+
+.navbar a:active,
+.navbar a:hover,
+.navbar a.router-link-active {
+	border: 1px solid violet;
+	background-color: purple;
+}
+
+.navbar__h1 {
+	margin-left: 1.5rem
+}
+
+
+.navbar__h1 a:active,
+.navbar__h1 a.router-link-active {
+	border: 1px solid transparent;
+	background-color: transparent;
+}
+
+
+.navbar__ul {
+	display: flex;
+	list-style: none;
+}
+
+.navbar__li {
+	margin: 0rem 0.5rem;
+	font-weight: bold;
+}
+
+/*components-ui-baseCard*/
+
+.card {
+	max-width: 40rem;
+	padding: 1rem;
+	margin: 1.5rem auto;
+	border-radius: 12px;
+	box-shadow: 0 2px 8px #888; /*horizontal offset/vertical offset/blurriness*/
+	background-color: lightgray;
+}
+
+.card__buttons {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+/*components-ui-baseButton*/
+
+.button, .link-button { /*button and link*/
+	padding: 0.75rem 1.5rem;
+	margin-right: 0.5rem;
+	border: 1px solid purple;
+	border-radius: 15px;
+	text-decoration: none;
+	cursor: pointer;
+	color: white;
+	font-weight: bold;
+	background-color: purple;
+	display: inline-block;
+}
+
+.button:hover,
+.button:active,
+.link-button:hover,
+.link-button:active {
+	background-color: #0A0A0A;
+	color: #F6AA12;
+	border-color: #F6AA12;
+}
+
+.flat { /*mode*/
+	background-color: transparent;
+	color: gray;
+	border: none;
+}
+
+.outline { /*mode*/
+	background-color: transparent;
+	color: purple;
+	border-color: purple;
+}
+
+/*components-ui-baseBadge*/
+
+.badge {
+	padding: 0.5rem 1.5rem;
+	margin-right: 0.5rem;
+	border-radius: 15px;
+	background-color: darkgray;
+	color: black;
+	display: inline-block;
+}
+
+/*components-ui-baseSpinner*/
+
+.spinner {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(255,255,255,.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+  -webkit-animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { -webkit-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+  to { -webkit-transform: rotate(360deg); }
+}
+
+/*transitions*/
+
+.route-enter {
+	opacity: 0;
+	transform: translateY(-30px);
+}
+
+.route-leave-to {
+	opacity: 0;
+	transform: translateY(30px);
+}
+
+.route-enter-active {
+	transition: all 0.5s ease-out;
+}
+
+.route-leave-active {
+	transition: all 0.5s ease-in;
+}
+
+.route-enter-to, .route-leave {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+/*global*/
+
+body {
+	margin: 0;
+	/*background-color: #ebe7e7;*/
+}

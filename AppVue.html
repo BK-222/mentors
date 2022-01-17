@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Mentors</title>
+	<link rel="stylesheet" href="AppVue.css">
+	<script src="../vue.js"></script>
+	<script src="https://unpkg.com/vue-router@2.0.0/dist/vue-router.js"></script>
+	<script src="https://unpkg.com/vuex@3.6.2"></script>
+</head>
+<body>
+
+	<div id="app">
+		<div>
+			<the-header><the-header>
+		</div>
+
+		<transition name="route" mode="out-in">
+			<router-view>
+			</router-view>
+		</transition>
+	</div>
+	
+</body>
+</html>
+
+
+	<script src="router-pages/mentors/mentorDetails.js"></script>
+	<script src="router-pages/mentors/mentorRegistration.js"></script>
+	<script src="router-pages/mentors/mentorsList.js"></script>
+
+	<script src="router-pages/requests/contactMentor.js"></script>
+	<script src="router-pages/requests/requestsReceived.js"></script>
+
+	<script src="router-pages/auth/userAuth.js"></script>
+
+	<script src="router-pages/notFound.js"></script>
+
+	<script src="components/layout/theHeader.js"></script>
+	<script src="components/mentors/mentorItem.js"></script>
+	<script src="components/mentors/mentorFilter.js"></script>
+	<script src="components/mentors/mentorForm.js"></script>
+	<script src="components/requests/requestItem.js"></script>
+	
+	<script src="components/ui/baseCard.js"></script>
+	<script src="components/ui/baseButton.js"></script>
+	<script src="components/ui/baseBadge.js"></script>
+	<script src="components/ui/baseSpinner.js"></script>
+
+	<script src="vuex/modules/mentors.js"></script>
+	<script src="vuex/modules/requests.js"></script>
+	<script src="vuex/modules/auth.js"></script>
+
+	<script src="vuex/vuex.js"></script>
+	<script src="router.js"></script>
+
+	<script>
+
+		new Vue({
+			el: '#app',
+			router: router,
+			store: vuex,
+			data: function() {
+				return {}
+			},
+			computed: {
+				didAutoLogOut: function() {
+					return this.$store.getters.didAutoLogOut;
+				}
+			},
+			components: {
+				'theHeader': theHeader
+			},
+			created() {
+				this.$store.dispatch('autoLogIn');
+			},
+			watch: {
+				didAutoLogOut: function(newValue, oldValue) {
+					if (newValue && newValue !== oldValue) {
+						this.$router.replace('/mentors');
+					}
+				}
+			}
+		});
+
+	</script>
